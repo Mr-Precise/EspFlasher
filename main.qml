@@ -565,7 +565,7 @@ ApplicationWindow {
                 Layout.fillHeight: true
                 verticalAlignment: Text.AlignVCenter
                 textFormat: Text.RichText
-                text: "<a href=\"http://www.todo.com\" target=\"_self\" title=\"wang\">www.todo.com</a>"
+                text: "<a href=\"https://github.com/mengzawj/EspFlasher\" target=\"_self\" title=\"wang\">GitHub项目</a>"
                 onLinkActivated: Qt.openUrlExternally(link)
                 MouseArea {
                     anchors.fill: parent
