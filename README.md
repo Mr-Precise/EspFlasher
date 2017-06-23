@@ -10,3 +10,5 @@
 ## 使用
 除额外设置esptool.py路径以外，其他与乐鑫官方下载工具用法类似。
 如果提示没有权限，则需要提升到管理权限运行（如Ubuntu下，$ sudo ./EspFlasher）
+
+![image](https://github.com/mengzawj/EspFlasher/raw/master/preview.png)
