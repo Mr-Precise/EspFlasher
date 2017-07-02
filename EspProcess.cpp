@@ -103,6 +103,8 @@ void EspProcess::onReadyReadStandardError()
             emit espError("串口设备不存在，无法打开");
         } else if (line.contains("Errno 13")) {
             emit espError("串口设备无法打开，没有权限");
+        } else if (line.contains("ValueError: Not a valid baudrate")) {
+            emit espError("请选择波特率");
         }
     }
 }

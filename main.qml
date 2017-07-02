@@ -464,6 +464,14 @@ ApplicationWindow {
                                     onClicked: {
                                         if (state == "download") {
                                             var binFiles = new Object
+
+                                            if (mPortComb.currentIndex < 0
+                                                    || mBaudComb.currentIndex < 0) {
+                                                mStatusText.text = "没有选择串口或者波特率"
+                                                mStatusText.color = "red"
+                                                return;
+                                            }
+
                                             for (var i = 0; i < binFileCnt; i++) {
                                                 if (mBinFiles.binFiles.binFiles[i].isChecked
                                                         && mBinFiles.binFiles.binFiles[i].addr
