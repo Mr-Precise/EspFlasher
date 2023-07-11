@@ -1,3 +1,8 @@
+# CMake, vscode, clangd cache.
+build/
+.cache/
+.vscode/
+
 # C++ objects and libs
 
 *.slo
