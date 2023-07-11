@@ -1,6 +1,7 @@
 # EspFlasher
 
-Espressif WIFI chip download tool，GUI for esptool，mainly for linux platform，eliminates the discomfort of typing commands every time. Currently used for ESP8266，it can be used for ESP32 with slight modification if needed.
+Espressif WIFI chip download tool，GUI for esptool，mainly for linux platform，eliminates the discomfort of typing commands every time.  
+Currently used for ESP8266，it can be used for ESP32 with slight modification if needed.
 
 ## Build:
 Required Qt version >=5.8  
