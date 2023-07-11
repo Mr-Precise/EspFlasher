@@ -1,20 +1,17 @@
 # EspFlasher
 
-乐鑫WIFI芯片的下载工具，对esptool进行了GUI包装，主要用于linux平台，免去了每次敲命令的麻烦。目前用于ESP8266，如果需要，稍微修改下即可用于ESP32。
+Espressif WIFI chip download tool，GUI for esptool，mainly for linux platform，eliminates the discomfort of typing commands every time. Currently used for ESP8266，it can be used for ESP32 with slight modification if needed.
 
-## 编译
-要求Qt版本>=5.8
+## Build:
+Required Qt version >=5.8  
+`sudo apt install qt5-default libqt5serialport5-dev`  
+soon
 
-## 运行
+## To run:
 
-必须在系统里安装好[esptool](https://github.com/espressif/esptool)，安装方法见官方说明。
+It must be installed [esptool](https://github.com/espressif/esptool)，see the official instructions for the installation method.
 
-## 使用
-除额外设置esptool.py路径以外，其他与乐鑫官方下载工具[Flash_Download_Tool](http://bbs.espressif.com/viewtopic.php?f=57&t=433)用法类似。
-如果提示没有权限，则需要提升到管理权限运行,如Ubuntu下:
+`$ sudo ./EspFlasher`
 
-$ sudo ./EspFlasher
-
-## 软件截图
-![image](https://github.com/mengzawj/EspFlasher/raw/master/screenshots/preview.png)
-
+## Screenshot:
+![image](https://github.com/Mr-Precise/EspFlasher/raw/main/screenshots/preview_en.png)
