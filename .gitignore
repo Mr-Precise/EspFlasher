@@ -2,6 +2,7 @@
 build/
 .cache/
 .vscode/
+compile_commands.json
 
 # C++ objects and libs
 
