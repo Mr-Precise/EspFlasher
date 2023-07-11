@@ -58,7 +58,7 @@ bool EspProcess::downloadImages(const QVariantMap& binFiles, const QString& port
         i++;
     }
     if (fileArgs.isEmpty()) {
-        emit espError("BIN文件不存在或者地址错误");
+        emit espError("BIN file does not exist or the address is wrong");
         return false;
     }
 
@@ -85,11 +85,11 @@ void EspProcess::onError(QProcess::ProcessError code)
 void EspProcess::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     if (exitStatus == QProcess::CrashExit) {
-        emit espError("任务终止");
+        emit espError("task termination");
     } else if (exitCode == 0) {
         emit espFinished();
     } else {
-        qWarning() << "任务返回码：" << exitCode << __FILE__ << __LINE__;
+        qWarning() << "Task return code: " << exitCode << __FILE__ << __LINE__;
     }
 }
 
@@ -100,11 +100,11 @@ void EspProcess::onReadyReadStandardError()
         QString line = QString::fromUtf8(mProcess->readLine());
         emit    outputsProbed(line);
         if (line.contains("Errno 2")) {
-            emit espError("串口设备不存在，无法打开");
+            emit espError("Device does not exist and cannot be opened");
         } else if (line.contains("Errno 13")) {
-            emit espError("串口设备无法打开，没有权限");
+            emit espError("Insufficient permissions to open serial device");
         } else if (line.contains("ValueError: Not a valid baudrate")) {
-            emit espError("请选择波特率");
+            emit espError("Please choose the baud rate");
         }
     }
 }
@@ -125,9 +125,9 @@ void EspProcess::onReadyReadStandardOutput()
         if (i->contains("Connecting...")) {
             emit espStarted();
         } else if (i->contains("A fatal error occurred: Failed to connect to")) {
-            emit espError("连接设备失败");
+            emit espError("Failed to connect to device");
         } else if (i->contains(QRegularExpression("Chip is (ESP8266|ESP32|ESP8285)"), &match)) {
-            emit metaDataProbed(QString("芯片: ") + match.captured(1));
+            emit metaDataProbed(QString("chip: ") + match.captured(1));
         } else if (i->contains(QRegularExpression("Writing at 0x[0-9a-fA-F]{8}\\.\\.\\. "
                                                   "\\((100|[0-9]{1}|[1-9][0-9]) %\\)"),
                        &match)) {

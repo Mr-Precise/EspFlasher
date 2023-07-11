@@ -25,7 +25,7 @@ ApplicationWindow {
         id: mCmdOutputsWindow
         x: applicationWindow.x + applicationWindow.width
         y: applicationWindow.y
-        title: "esptool输出"
+        title: "esptool output window"
         width: 500
         height: applicationWindow.height
         onClosing: mOutPutsShowBtn.checked = false
@@ -41,7 +41,7 @@ ApplicationWindow {
                     anchors.centerIn: parent
                     ToolButton {
                         Layout.fillHeight: true
-                        text: "清屏"
+                        text: "Clear"
                         onClicked: mCmdOutputs.clear()
                     }
                 }
@@ -56,7 +56,7 @@ ApplicationWindow {
                     selectByKeyboard: true
                     selectByMouse: true
                     wrapMode: TextEdit.Wrap
-                    placeholderText: "当前没有控制台输出"
+                    placeholderText: "Currently there is no console output"
                     cursorVisible: true
                 }
                 ScrollBar.vertical: ScrollBar {
@@ -75,16 +75,16 @@ ApplicationWindow {
         }
         onOutputsProbed: mCmdOutputs.insert(mCmdOutputs.length, data)
         onEspStarted: {
-            mStatusText.text = "正在连接设备..."
+            mStatusText.text = "Connecting to device..."
             mStatusText.color = "black"
             mDownloadButton.state = "stop"
         }
         onDowmloadProgressChanged: {
-            mStatusText.text = "正在下载，当前进度 " + percent + "%"
+            mStatusText.text = "Downloading, current progress " + percent + "%"
             mStatusText.color = "black"
         }
         onEspFinished: {
-            mStatusText.text = "操作成功..."
+            mStatusText.text = "Successful operation..."
             mStatusText.color = "green"
             mDownloadButton.state = "download"
         }
@@ -139,7 +139,7 @@ ApplicationWindow {
 
                     Label {
                         id: mEspToolPathLabel
-                        text: qsTr("esptool路径")
+                        text: qsTr("esptool path")
                         verticalAlignment: Text.AlignVCenter
                         Layout.fillHeight: true
                     }
@@ -155,7 +155,7 @@ ApplicationWindow {
                         Layout.fillWidth: true
                         font.pixelSize: 12
                         selectByMouse: true
-                        placeholderText: "选择esptool路径"
+                        placeholderText: "Select esptool path"
                     }
 
                     Button {
@@ -164,7 +164,7 @@ ApplicationWindow {
                         Layout.preferredWidth: height
                         Layout.fillHeight: true
                         onClicked: {
-                            mFileDialog.nameFilters = ["esptool.py"]
+                            mFileDialog.nameFilters = ["esptool.py", "esptool"]
                             mFileDialog.open()
                             mFileDialog.acceptCallback = function (filePath) {
                                 mEspToolPath.text = filePath
@@ -176,7 +176,7 @@ ApplicationWindow {
                 GroupBox {
                     id: mBinFiles
                     width: parent.width
-                    title: qsTr("BIN文件")
+                    title: qsTr("BIN Files")
                     property var binFiles: JSON.parse(mSettings.binFiles)
 
                     Component.onDestruction: mSettings.binFiles = JSON.stringify(
@@ -212,7 +212,7 @@ ApplicationWindow {
                                     padding: 0
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
-                                    placeholderText: "选择BIN文件或者输入BIN文件路径"
+                                    placeholderText: "Select the BIN file or enter the path of the BIN file"
                                     selectByMouse: true
                                     text: mBinFiles.binFiles.binFiles[index].file
                                     onTextChanged: {
@@ -248,7 +248,7 @@ ApplicationWindow {
                                     padding: 0
                                     Layout.preferredWidth: 3 * itemHeight
                                     Layout.fillHeight: true
-                                    placeholderText: "下载地址"
+                                    placeholderText: "Address"
                                     selectByMouse: true
                                     text: mBinFiles.binFiles.binFiles[index].addr
                                     onTextChanged: mBinFiles.binFiles.binFiles[index].addr = text
@@ -261,7 +261,7 @@ ApplicationWindow {
                 GroupBox {
                     id: mSpiConfig
                     width: parent.width
-                    title: qsTr("SPI设置")
+                    title: qsTr("SPI config")
 
                     RowLayout {
                         id: rowLayout
@@ -355,7 +355,7 @@ ApplicationWindow {
                 GroupBox {
                     id: mDownLoadPanel
                     width: parent.width
-                    title: qsTr("控制面板")
+                    title: qsTr("Download panel")
 
                     Column {
                         width: parent.width
@@ -371,7 +371,7 @@ ApplicationWindow {
                             Layout.preferredHeight: 54
                             Layout.preferredWidth: 436
                             font.pixelSize: 12
-                            placeholderText: "当前没有设备信息"
+                            placeholderText: "Currently no device information"
                             readOnly: true
                             selectByKeyboard: true
                             selectByMouse: true
@@ -393,12 +393,12 @@ ApplicationWindow {
                                 columns: 3
                                 Label {
                                     id: mPortLabel
-                                    text: qsTr("端口")
+                                    text: qsTr("Port")
                                 }
 
                                 Label {
                                     id: mBaudLabel
-                                    text: qsTr("波特率")
+                                    text: qsTr("Baud Rate")
                                 }
 
                                 ComboBox {
@@ -460,14 +460,14 @@ ApplicationWindow {
                                 Button {
                                     id: mDownloadButton
                                     Layout.preferredHeight: itemHeight
-                                    text: qsTr("下载")
+                                    text: qsTr("Download")
                                     onClicked: {
                                         if (state == "download") {
                                             var binFiles = new Object
 
                                             if (mPortComb.currentIndex < 0
                                                     || mBaudComb.currentIndex < 0) {
-                                                mStatusText.text = "没有选择串口或者波特率"
+                                                mStatusText.text = "No serial port or baud rate selected"
                                                 mStatusText.color = "red"
                                                 return;
                                             }
@@ -502,14 +502,14 @@ ApplicationWindow {
                                             name: "download"
                                             PropertyChanges {
                                                 target: mDownloadButton
-                                                text: "下载"
+                                                text: "Download!"
                                             }
                                         },
                                         State {
                                             name: "stop"
                                             PropertyChanges {
                                                 target: mDownloadButton
-                                                text: "停止"
+                                                text: "Stop!"
                                             }
                                         }
                                     ]
@@ -537,7 +537,7 @@ ApplicationWindow {
                 id: mStatusText
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                text: "空闲"
+                text: "Status"
                 verticalAlignment: Text.AlignVCenter
             }
 
@@ -550,7 +550,7 @@ ApplicationWindow {
                 Layout.fillHeight: true
                 verticalAlignment: Text.AlignVCenter
                 textFormat: Text.RichText
-                text: "<a href=mailto:mengzawj@qq.com>发送邮件给作者</a>"
+                text: "<a href=mailto:mengzawj@qq.com>Author email</a>"
                 onLinkActivated: Qt.openUrlExternally(link)
                 MouseArea {
                     id: mMailMouseArea
@@ -573,7 +573,7 @@ ApplicationWindow {
                 Layout.fillHeight: true
                 verticalAlignment: Text.AlignVCenter
                 textFormat: Text.RichText
-                text: "<a href=\"https://github.com/mengzawj/EspFlasher\" target=\"_self\" title=\"wang\">GitHub项目</a>"
+                text: "<a href=\"https://github.com/mengzawj/EspFlasher\" target=\"_self\" title=\"wang\">GitHub project</a>"
                 onLinkActivated: Qt.openUrlExternally(link)
                 MouseArea {
                     anchors.fill: parent
@@ -607,3 +607,5 @@ ApplicationWindow {
         }
     }
 }
+
+
