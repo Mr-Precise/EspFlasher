@@ -21,6 +21,10 @@ mkdir build && cd build
 cmake .. -G "Unix Makefiles"
 make
 ```
+After this, if desired, you can also build an linux .AppImage
+```
+./appimage.sh
+```
 
 ## To run:  
 It must be installed [esptool](https://github.com/espressif/esptool)，see the official instructions for the installation method.

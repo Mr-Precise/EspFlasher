@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=EspFlasher
+Comment=Espressif WIFI chip download tool
+Exec=EspFlasher
+Icon=espflasher
+Terminal=false
+Type=Application
+StartupNotify=true
+Keywords=esp;esp32;esp8266;8266;
+Categories=Utility;Application;

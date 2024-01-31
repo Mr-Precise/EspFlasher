@@ -2,7 +2,9 @@
 build/
 .cache/
 .vscode/
+AppDir/
 compile_commands.json
+linuxdeploy-*
 
 # C++ objects and libs
 
